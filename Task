@@ -1,0 +1,331 @@
+#include "NXCDefs.h"
+int i, d1, a1, d2, a2, d3, a3;
+
+//Reset all value
+sub reset()
+{
+d1=0;
+a1=0;
+d2=0;
+a2=0;
+d3=0;
+a3=0;
+}
+
+//HOME EVENT
+sub homescreen()
+{
+
+i=1;
+ClearScreen();
+TextOut(0,LCD_LINE1,"####GROUP C####");
+Wait(100);
+TextOut(0,LCD_LINE3,"###GIVE THREE###");
+Wait(100);
+TextOut(0,LCD_LINE5,"#ANGLE&DISTANCE#");
+Wait(100);
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+TextOut(8,LCD_LINE7,"Continue..");
+if(i>8)
+{
+if(i==16) i=1;
+TextOut(0,LCD_LINE7,"               ");
+}
+
+Wait(50);
+i=i+1;
+}
+until(!ButtonPressed(BTNCENTER,1));
+ClearScreen();
+TextOut(0,LCD_LINE2,"Press Right Btn");
+Wait(500);
+TextOut(0,LCD_LINE3,"For addition value");
+Wait(500);
+TextOut(0,LCD_LINE5,"Press Left Btn");
+Wait(500);
+TextOut(0,LCD_LINE6,"For reduction value");
+Wait(500);
+}
+
+
+///////////////////////////////////////////////
+//receiving value a1 event
+sub angle1()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 1*");
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 1*");
+a1=a1+5;
+Wait(300);
+NumOut(41,LCD_LINE6,a1);
+}
+
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 1*");
+a1=a1-5;
+Wait(300);
+NumOut(41,LCD_LINE6,a1);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+
+//receiving value d1 event
+sub distance1()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 1*");
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 1*");
+d1=d1+5;
+Wait(300);
+NumOut(41,LCD_LINE6,d1);
+}
+
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 1*");
+d1=d1-5;
+Wait(300);
+NumOut(41,LCD_LINE6,d1);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+///////////////////////////////////////////////
+//receiving value a2 event
+sub angle2()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 2*");
+//------------------------------------------------------------
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+while(ButtonPressed(BTNRIGHT,1)){
+        TextOut(0,LCD_LINE2,"*Angle 2*");
+a2=a2+5;
+Wait(300);
+NumOut(41,LCD_LINE6,a2);
+}
+
+}
+//----------------------------------------------------------
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 2*");
+a2=a2-5;
+Wait(300);
+NumOut(41,LCD_LINE6,a2);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+
+//receiving value d2 event
+sub distance2()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 2*");
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 2*");
+d2=d2+5;
+Wait(300);
+NumOut(41,LCD_LINE6,d2);
+}
+
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 2*");
+d2=d2-5;
+Wait(300);
+NumOut(41,LCD_LINE6,d2);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+
+///////////////////////////////////////////////
+//receiving value a3 event
+sub angle3()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 3*");
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 3*");
+a3=a3+5;
+Wait(300);
+NumOut(41,LCD_LINE6,a3);
+}
+
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Angle 3*");
+a3=a3-5;
+Wait(300);
+NumOut(41,LCD_LINE6,a3);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+
+//receiving value d3 event
+sub distance3()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 3*");
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 3*");
+d3=d3+5;
+Wait(300);
+NumOut(41,LCD_LINE6,d3);
+}
+
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Distance 3*");
+d3=d3-5;
+Wait(300);
+NumOut(41,LCD_LINE6,d3);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+
+///////////////////////////////////////////////
+//display all
+sub displayAll()
+{
+ClearScreen();
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+TextOut(0,LCD_LINE1,"A1 & D1:");
+NumOut(31,LCD_LINE2,a1);
+NumOut(70,LCD_LINE2,d1);
+//TextOut(0,LCD_LINE3,"Distance 1:");
+//NumOut(41,LCD_LINE4,d1);
+
+TextOut(0,LCD_LINE4,"A2 & D2:");
+NumOut(31,LCD_LINE5,a2);
+NumOut(70,LCD_LINE5,d2);
+//TextOut(0,LCD_LINE7,"Distance 2:",d2);
+//NumOut(41,LCD_LINE8,d2);  */
+
+TextOut(0,LCD_LINE7,"A3 & D3:");
+NumOut(31,LCD_LINE8,a3);
+NumOut(70,LCD_LINE8,d3);
+//TextOut(0,LCD_LINE1,"Distance 3:");
+//NumOut(41,LCD_LINE2,d3);
+}
+until(!ButtonPressed(BTNCENTER,1));
+
+}
+
+sub moverobot()
+{
+ ClearScreen();
+TextOut(0,LCD_LINE2,"WAIT 10SEC");
+if(a1<0){
+Wait(1000);
+RotateMotorEx(OUT_BC, 50,a1*2,-100,true,true);
+}
+else{
+Wait(1000);
+RotateMotorEx(OUT_BC, 50,a1*2,100,true,true);
+}
+Wait(100);
+RotateMotor(OUT_BC,50,d1*22.5);
+if(a2<0){
+ Wait(100);
+ RotateMotorEx(OUT_BC, 50,a2*2,-100,true,true);
+}
+
+else{
+ Wait(100);
+ RotateMotorEx(OUT_BC, 50,a2*2,100,true,true);
+}
+Wait(100);
+ RotateMotor(OUT_BC,50,d2*22.5);
+if(a3<0){
+Wait(100);
+ RotateMotorEx(OUT_BC, 50,a3*2,-100,true,true);
+}
+
+else{
+  Wait(100);
+ RotateMotorEx(OUT_BC, 50,a3*2,100,true,true);
+}
+RotateMotor(OUT_BC,50,d3*22.5);
+
+ //Wait(10000);
+ //RotateMotorEx(OUT_AB, 50,a1*2,100,true,true);
+ //Wait(1000);
+ //RotateMotor(OUT_AB,50,d1*22.5);
+ //Wait(1000);
+ //RotateMotorEx(OUT_AB, 50,a2*2,100,true,true);
+ //Wait(1000);
+ //RotateMotor(OUT_AB,50,d2*22.5);
+ //Wait(1000);
+// RotateMotorEx(OUT_AB, 50,a3*2,100,true,true);
+// Wait(1000);
+// RotateMotor(OUT_AB,50,d3*22.5);
+
+}
+
+task main()
+{
+reset();
+homescreen();
+angle1();
+distance1();
+angle2();
+distance2();
+angle3();
+distance3();
+displayAll();
+moverobot();
+}
